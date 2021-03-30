@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Racket1 implements KeyListener {
+public class Racket1 {
     private int xVal;
     private int yVal;
     private int velocity;
@@ -18,7 +18,7 @@ public class Racket1 implements KeyListener {
         this.xVal = 20;
         this.yVal = 225;
         this.velocity = 0;
-        UPPER_BOUNDS = 440;
+        UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
         SPEED = 1;
     }
@@ -39,9 +39,26 @@ public class Racket1 implements KeyListener {
     public int getYVal() {
         return yVal;
     }
+    
+    public void pressUp() {
+    	velocity = -SPEED;
+    }
+    
+    public void pressDown() {
+    	velocity = SPEED;
+    }
+    
+    public void release() {
+    	velocity = 0;
+    }
 
     private void boundaryCheck() {
-    	if (yVal >= UPPER_BOUNDS || yVal <= LOWER_BOUNDS) {
+    	if (yVal > UPPER_BOUNDS) {
+    		yVal = UPPER_BOUNDS;
+    		velocity = 0;
+    	}
+    	else if (yVal < LOWER_BOUNDS) {
+    		yVal = LOWER_BOUNDS;
     		velocity = 0;
     	}
     }
@@ -50,28 +67,5 @@ public class Racket1 implements KeyListener {
         boundaryCheck();
         yVal += velocity;
     }
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			velocity = -SPEED;
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_S) {
-			velocity = SPEED;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		velocity = 0;
-	}
 
 }
