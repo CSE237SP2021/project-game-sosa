@@ -4,13 +4,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class MyGraphics extends JPanel implements ActionListener {
+public class MyGraphics extends JPanel implements ActionListener{
     
     Timer timer = new Timer(4, this);
 
     int frameWidth = 500;
     int frameHeight = 500;
     Racket1 racket1;
+
+    KeyListen keyListen;
+    
     Racket2 racket2;
     Ball pongBall;
     public MyGraphics(){
@@ -18,6 +21,10 @@ public class MyGraphics extends JPanel implements ActionListener {
         this.racket1 = new Racket1();
         this.racket2 = new Racket2();
         this.pongBall = new Ball();
+        keyListen = new KeyListen();
+        this.setFocusable(true);
+        this.addKeyListener(keyListen);
+
     }
 
     //paint graphics in the frame
@@ -29,17 +36,20 @@ public class MyGraphics extends JPanel implements ActionListener {
         graphic2D.setColor(Color.WHITE);
         graphic2D.fillRect(racket2.getXVal(), racket2.getYVal(), 10, 50);
 
-        graphic2D.fillRect(racket1.xVal, racket1.yVal, 10, 50);
-        
+
+        graphic2D.fillRect(racket1.getXVal(), racket1.getYVal(), 10, 50);
+
         graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), 10, 10);
         
         
+
     }
 
-
+    
     
     //method that is triggered after a certain amount of time is reached
     public void actionPerformed(ActionEvent e){
+
     	pongBall.move();
     	racket2.move();
     	
@@ -63,7 +73,38 @@ public class MyGraphics extends JPanel implements ActionListener {
     	if(pongBall.getYVal() <= 0 || pongBall.getYVal() >= 470) {
     		pongBall.hitWall();
     	}
-    	
+
         repaint();
     }
+	
+    class KeyListen implements KeyListener {
+    	
+    	@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+				racket1.pressUp();
+				System.out.println("up");
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_S) {
+				racket1.pressDown();
+				System.out.println("down");
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			racket1.release();
+			System.out.println("release");
+		}
+    	
+    }
+    
 }
+
