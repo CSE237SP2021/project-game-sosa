@@ -52,7 +52,7 @@ public class MyGraphics extends JPanel implements ActionListener{
 
     	pongBall.move();
     	racket2.move();
-    	
+    	racket1.move();
     	//ricochets the ball off of the right racket if ball has same x val and y val in between the rackets bounds
     	if(((racket2.getXVal() -10) == pongBall.getXVal()) && (pongBall.getYVal() >= racket2.getYVal() - 25)
     			&& (pongBall.getYVal() <= racket2.getYVal() + 25)) {
