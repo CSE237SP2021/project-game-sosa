@@ -13,9 +13,11 @@ public class MyGraphics extends JPanel implements ActionListener {
     int frameWidth = 500;
     int frameHeight = 500;
     Racket1 racket1;
+    Racket2 racket2;
     public MyGraphics(){
         timer.start();
         this.racket1 = new Racket1();
+        this.racket2 = new Racket2();
 
     }
 
@@ -26,7 +28,7 @@ public class MyGraphics extends JPanel implements ActionListener {
 
         Graphics2D graphic2D = (Graphics2D) graphic;
         graphic2D.setColor(Color.WHITE);
-        graphic2D.fillRect(racket2XVal, racket2YVal, 10, 50);
+        graphic2D.fillRect(racket2.getXVal(), racket2.getYVal(), 10, 50);
 
         graphic2D.fillRect(racket1.xVal, racket1.yVal, 10, 50);
         //this.racket1.draw();
@@ -36,12 +38,8 @@ public class MyGraphics extends JPanel implements ActionListener {
     
     //method that is triggered after a certain amount of time is reached
     public void actionPerformed(ActionEvent e){
-        //changes direction if border hit
-        if(racket2YVal >= 440 || racket2YVal <= 1){
-            yVelocity = -yVelocity;
-        }
-        
-        racket2YVal+= yVelocity;
+       
+    	racket2.move();
         repaint();
     }
 }
