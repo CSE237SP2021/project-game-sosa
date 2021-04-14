@@ -7,9 +7,7 @@ import javax.swing.*;
 public class MyGraphics extends JPanel implements ActionListener {
     
     Timer timer = new Timer(4, this);
-    int racket2XVal  = 480;
-    int racket2YVal = 225;
-    int yVelocity = 1;
+
     int frameWidth = 500;
     int frameHeight = 500;
     Racket1 racket1;
