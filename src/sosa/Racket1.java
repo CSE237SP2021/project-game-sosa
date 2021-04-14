@@ -17,6 +17,7 @@ public class Racket1 {
     public Racket1() {
         this.xVal = 20;
         this.yVal = 225;
+
         this.velocity = 0;
         UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
@@ -37,6 +38,7 @@ public class Racket1 {
     public void pressUp() {
     	velocity = -SPEED;
     }
+
     
     //changes the velocity to handle moving the paddle down
     public void pressDown() {
