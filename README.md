@@ -27,7 +27,8 @@ What commands are needed to compile and run your code from the command line (or 
 
 a script called run.sh is provided to compile and run the program
 
-1.open a terminal or the command line
+1. open a terminal or the command line
+
 
 2. navigate to the development branch where the script is 
 
