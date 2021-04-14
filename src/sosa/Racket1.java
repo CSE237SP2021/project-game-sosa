@@ -15,19 +15,9 @@ public class Racket1{
         this.xVal = 20;
         this.yVal = 225;
         this.velocity = 1;
-
-
     }
-    /*
-    public void KeyPressed(KeyEvent e){
-        System.out.println("how");
-        if(e.getKeyCode() == KeyEvent.VK_W){
-            this.yVal+= this.velocity;
-            System.out.println("how");
-        }
-    }
-*/
-    public void KeyPressed(KeyEvent e){
+
+ public void KeyPressed(KeyEvent e){
         System.out.println("how");
     }
     public int getXVal(){
