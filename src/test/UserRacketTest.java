@@ -28,12 +28,14 @@ class UserRacketTest {
         int velocity = 0;
        
 	}
+	
 	@Test
 	public void testPressUp() {
 	    velocity = -SPEED;
 	    assertTrue(velocity == -1);
 	}
-	 @Test
+	
+	@Test
      public void testPressDown() {
     	velocity = SPEED;
         assertTrue(velocity == 1);
@@ -44,15 +46,32 @@ class UserRacketTest {
     	velocity = 0;
         assertTrue(velocity == 0);
     }
+    
     @Test
     public void testUpperBound(){
-        yVal = 426;
         if (yVal > UPPER_BOUNDS){
-            assertTrue(yVal == UPPER_BOUNDS);
-            assertTrue(velocity == 0);
+        	assertTrue(yVal == UPPER_BOUNDS);
+        	assertTrue(velocity == 0);
         }
+       
     }
-
+    
+    @Test
+    public void testLowerBound() {
+    	if (yVal < LOWER_BOUNDS) {
+    		assertTrue(yVal == LOWER_BOUNDS);
+    		assertTrue(velocity == 0);
+    	}
+    	
+    }
+    
+    @Test
+    public void testMove(){
+    	int result =  yVal + velocity;
+    	assertTrue(yVal == result);
+       
+    }
+    
 	
 
 }
