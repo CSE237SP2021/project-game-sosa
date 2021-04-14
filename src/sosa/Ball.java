@@ -1,5 +1,7 @@
 package sosa;
 
+import java.util.function.BooleanSupplier;
+
 public class Ball {
 
 	private double xVal;
@@ -11,20 +13,24 @@ public class Ball {
 	private final int LOWER_BOUNDS;
 	private final int LEFTWARD_BOUNDS;
 	private final int RIGHTWARD_BOUNDS;
+	private final double INIT_X;
+	private final double INIT_Y;
+	private final int RADIUS;
 	
 	public Ball() {
-		this.xVal = 250;
-		this.yVal = 250;
+		INIT_X = 250;
+		INIT_Y = 250;
+		this.xVal = INIT_X;
+		this.yVal = INIT_Y;
 		this.speed = 1;
-		this.xVelocity = -1;
+		this.xVelocity = (Math.random() > 0.5 ? 1 : -1);
 		this.yVelocity = 0;
 		UPPER_BOUNDS = 425;
 		LOWER_BOUNDS = 0;
 		LEFTWARD_BOUNDS = 0;
-		RIGHTWARD_BOUNDS = 425;
+		RIGHTWARD_BOUNDS = 500;
+		RADIUS = 5;
 	}
-	
-	
 	
     //gets the x value of the ball
     public double getXVal() {
@@ -34,6 +40,48 @@ public class Ball {
     //gets the y value of the ball
     public double getYVal() {
         return yVal;
+    }
+    
+    // for testing purposes
+    public void setXVal(double newXVal) {
+    	xVal = newXVal;
+    }
+    
+    // for testing purposes
+    public void setYVal(double newYVal) {
+    	yVal = newYVal;
+    }
+    
+    public void reset() {
+    	xVal = INIT_X;
+    	yVal = INIT_Y;
+    	
+    	xVelocity = (Math.random() > 0.5 ? 1 : -1);
+    	yVelocity = 0;
+    }
+    
+    // for testing purposes
+    public double getInitX() {
+    	return INIT_X;
+    }
+    
+    // for testing purposes
+    public double getInitY() {
+    	return INIT_Y;
+    }
+    
+    // for testing purposes
+    public int getLeftwardBounds() {
+    	return LEFTWARD_BOUNDS;
+    }
+    
+    // for testing purposes
+    public int getRightwardBounds() {
+    	return RIGHTWARD_BOUNDS;
+    }
+    
+    public int getRadius() {
+    	return RADIUS;
     }
     
     //changes the direction of the ball after it hits a paddle
@@ -58,9 +106,17 @@ public class Ball {
     
     //this moves the ball in the desired direction
     public void move() {
-   
     	this.xVal += this.xVelocity;
     	this.yVal += this.yVelocity;
     }
+
+	public Boolean outOfBoundsLeft() {
+		return (xVal + RADIUS) < (LEFTWARD_BOUNDS - (RADIUS * 4));
+	}
+
+	public Boolean outOfBoundsRight() {
+		return (xVal - RADIUS) > (RIGHTWARD_BOUNDS + (RADIUS * 4));
+	}
+    
     
 }

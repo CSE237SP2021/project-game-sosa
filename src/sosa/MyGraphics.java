@@ -1,6 +1,7 @@
 package sosa;
 
 import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -34,14 +35,11 @@ public class MyGraphics extends JPanel implements ActionListener{
 
         Graphics2D graphic2D = (Graphics2D) graphic;
         graphic2D.setColor(Color.WHITE);
+        
         graphic2D.fillRect(racket2.getXVal(), racket2.getYVal(), 10, 50);
-
-
         graphic2D.fillRect(racket1.getXVal(), racket1.getYVal(), 10, 50);
 
-        graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), 10, 10);
-        
-        
+        graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), pongBall.getRadius()*2, pongBall.getRadius()*2);
 
     }
 
@@ -50,7 +48,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     //method that is triggered after a certain amount of time is reached
     public void actionPerformed(ActionEvent e){
 
-    	pongBall.move();
+    	getPongBall().move();
     	racket2.move();
     	racket1.move();
     	//ricochets the ball off of the right racket if ball has same x val and y val in between the rackets bounds
@@ -58,7 +56,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     			&& (pongBall.getYVal() <= racket2.getYVal() + 25)) {
     		System.out.println("doink");
     	
-    		pongBall.hitPaddle();
+    		getPongBall().hitPaddle();
     	}
     	
     	//ricochets the ball off of the left racket if ball has same x val and y val in between the rackets bounds
@@ -73,11 +71,42 @@ public class MyGraphics extends JPanel implements ActionListener{
     	if(pongBall.getYVal() <= 0 || pongBall.getYVal() >= 470) {
     		pongBall.hitWall();
     	}
+    	
+    	if (pongBall.outOfBoundsLeft()) {
+    		System.out.println("Left out of bounds: " + pongBall.getXVal());
+    		racket2.scorePoint();
+    		resetPositions();
+    	} else if (pongBall.outOfBoundsRight()) {
+    		System.out.println("Right out of bounds " + pongBall.getYVal());
+    		racket1.scorePoint();
+    		resetPositions();
+    	}
 
         repaint();
     }
 	
-    class KeyListen implements KeyListener {
+    // For testing purposes
+    public Ball getPongBall() {
+		return pongBall;
+	}
+    
+    // For testing purposes
+	public Racket1 getRacket1() {
+		return racket1;
+	}
+	
+	// For testing purposes
+	public Racket2 getRacket2() {
+		return racket2;
+	}
+	
+	public void resetPositions() {
+		pongBall.reset();
+		racket1.reset();
+		racket2.reset();
+	}
+
+	class KeyListen implements KeyListener {
     	
     	@Override
 		public void keyTyped(KeyEvent e) {
