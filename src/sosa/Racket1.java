@@ -22,36 +22,33 @@ public class Racket1 {
         LOWER_BOUNDS = 0;
         SPEED = 1;
     }
-    /*
-    public void KeyPressed(KeyEvent e){
-        System.out.println("how");
-        if(e.getKeyCode() == KeyEvent.VK_W){
-            this.yVal+= this.velocity;
-            System.out.println("how");
-        }
-    }
-*/
-    
+
+    //gets the x value of the paddle
     public int getXVal() {
         return xVal;
     }
-
+    
+    //gets the y value of the paddle
     public int getYVal() {
         return yVal;
     }
     
+    //changes the velocity to handle moving the paddle up
     public void pressUp() {
     	velocity = -SPEED;
     }
     
+    //changes the velocity to handle moving the paddle down
     public void pressDown() {
     	velocity = SPEED;
     }
     
+    //changes the velocity to handle a idle state
     public void release() {
     	velocity = 0;
     }
-
+    
+    //checks if the paddle is going beyond the boundaries
     private void boundaryCheck() {
     	if (yVal > UPPER_BOUNDS) {
     		yVal = UPPER_BOUNDS;
@@ -63,6 +60,8 @@ public class Racket1 {
     	}
     }
 
+    
+    //moves the yposition of the paddle based on the current velocity amount
     public void move(){
         boundaryCheck();
         yVal += velocity;
