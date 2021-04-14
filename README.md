@@ -2,13 +2,21 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 What user stories were completed this iteration?
 
-The user stories that were completed this iteration were the controlling one paddle with the arrow keys and having the other paddle move on its own.
+Iteration 1: The user stories that were completed this iteration were the controlling one paddle with the arrow keys and having the other paddle move on its own.
 
+
+
+
+Iteration 2: The user stories that were completed this iteration were the added ball with appropiate movements, more tests , and a scorebaord.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 What user stories do you intend to complete next iteration?
 
-Next iteration we intend to complete the ball movement story along with the score tracking story.
+Iteration 1: Next iteration we intend to complete the ball movement story along with the score tracking story.
 
+
+
+
+Iteration 2: Next iteration we intend to enhance the user interface and make the movements smoother. 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Is there anything that you implemented but doesn't currently work?
 
