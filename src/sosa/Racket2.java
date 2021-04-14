@@ -36,21 +36,10 @@ public class Racket2 {
     
 
     
-    //checks if the paddle is going beyond the boundaries
-    private void boundaryCheck() {
-    	if (yVal > UPPER_BOUNDS) {
-    		yVal = UPPER_BOUNDS;
-    		velocity = 0;
-    	}
-    	else if (yVal < LOWER_BOUNDS) {
-    		yVal = LOWER_BOUNDS;
-    		velocity = 0;
-    	}
-    }
-    
+    //this handles moving the automated 
     public void move(){
-        //boundaryCheck();
-        if(this.yVal >= 440 || this.yVal <= 1){
+        
+        if(this.yVal >= UPPER_BOUNDS || this.yVal <= LOWER_BOUNDS){
             this.velocity = -this.velocity;
         }
         
