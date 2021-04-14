@@ -6,11 +6,13 @@ Iteration 1: The user stories that were completed this iteration were the contro
 
 
 
+
 Iteration 2: The user stories that were completed this iteration were the added ball with appropiate movements, more tests , and a scorebaord.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 What user stories do you intend to complete next iteration?
 
 Iteration 1: Next iteration we intend to complete the ball movement story along with the score tracking story.
+
 
 
 
