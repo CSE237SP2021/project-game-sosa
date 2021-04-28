@@ -49,6 +49,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e){
 
     	getPongBall().move();
+    	racket2.compareToBallY(pongBall.getYVal());
     	racket2.move();
     	racket1.move();
     	//ricochets the ball off of the right racket if ball has same x val and y val in between the rackets bounds
