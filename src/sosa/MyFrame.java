@@ -8,6 +8,9 @@ import javax.swing.*;
 
 public class MyFrame extends JFrame{
   
+	public JButton onePlayer = new JButton("1 Player");
+	public JButton twoPlayer = new JButton("2 Player");
+	public JButton quit = new JButton("Quit");
 	
 	//this class is used for the display and functionality of the main menu
     public MyFrame(){
@@ -25,7 +28,6 @@ public class MyFrame extends JFrame{
         repaint();      
         
         //creates a button and allows for the button to direct to the one player version of the game
-       JButton onePlayer = new JButton("1 Player");
        onePlayer.setBounds(40, 250, 120, 30);
        onePlayer.addActionListener(new ActionListener() {
     	   public void actionPerformed(ActionEvent e) {
@@ -40,7 +42,7 @@ public class MyFrame extends JFrame{
        });
       
        //creates a button and allows for the button to direct to the two player version of the game
-      JButton twoPlayer = new JButton("2 Player");
+      
       twoPlayer.setBounds(340, 250, 120, 30);
       twoPlayer.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
@@ -51,7 +53,6 @@ public class MyFrame extends JFrame{
       });
       
       //creates a button and allows for the user to close the application by clicking the button
-      JButton quit = new JButton("Quit");
       quit.setBounds(190, 400, 120, 30);
       quit.addActionListener(new ActionListener() {
     	  public void actionPerformed(ActionEvent e) {
