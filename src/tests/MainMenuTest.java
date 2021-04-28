@@ -38,14 +38,8 @@ class MainMenuTest {
 		
 	}
 	
-	@Test
-	void quitButtonPresses() {
-		mainMenu.quit.doClick();
-		
-		assertEquals(false, mainMenu.quit.isVisible());
-	}
 	
-	
+
 	
 }
 
