@@ -122,9 +122,24 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			player1.release();
-			player2.release();
-			System.out.println("release");
+			
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+				player1.release(true);
+				System.out.println("release player 1");
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_S) {
+				player1.release(false);
+				System.out.println("release player 1");
+			}
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				player2.release(true);
+				System.out.println("release player 2");
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				player2.release(false);
+				System.out.println("release player 2");
+			}
+			
 		}
     	
     }

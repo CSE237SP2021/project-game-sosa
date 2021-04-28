@@ -103,8 +103,12 @@ public class MyGraphics extends JPanel implements ActionListener{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			racket1.release();
-			System.out.println("release");
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+				racket1.release(true);
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_S) {
+				racket1.release(false);
+			}
 		}
     	
     }
