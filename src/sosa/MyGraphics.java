@@ -53,6 +53,20 @@ public class MyGraphics extends JPanel implements ActionListener{
         graphicScore.setFont(font);
         graphicScore.drawString("Player 1: "+ score1, 10, 400);
         graphicScore.drawString("Player 2: "+ score2, 370, 400);
+	    
+	   
+        JButton quitButtonInPlay = new JButton("quit game");
+        quitButtonInPlay.addActionListener(new ActionListener() {
+  
+    	public void actionPerformed(ActionEvent e) {
+	        		MyFrame mainMenu = new MyFrame();
+	     		   mainMenu.setVisible(true);
+ 
+	        	}
+		      });
+
+    this.add(quitButtonInPlay);
+        
     }
 
     
