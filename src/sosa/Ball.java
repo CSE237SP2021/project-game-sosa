@@ -8,7 +8,7 @@ public class Ball {
 	private double yVal;
 	double xVelocity;
 	double yVelocity;
-	private int speed;
+	private final double MAX_Y_SPEED;
 	private final int UPPER_BOUNDS;
 	private final int LOWER_BOUNDS;
 	private final int LEFTWARD_BOUNDS;
@@ -17,12 +17,12 @@ public class Ball {
 	private final double INIT_Y;
 	private final int RADIUS;
 	
-	public Ball() {
+	public Ball(double maxXSpeed) {
 		INIT_X = 250;
 		INIT_Y = 250;
 		this.xVal = INIT_X;
 		this.yVal = INIT_Y;
-		this.speed = 1;
+		this.MAX_Y_SPEED = maxXSpeed;
 		this.xVelocity = (Math.random() > 0.5 ? 1 : -1);
 		this.yVelocity = 0;
 		UPPER_BOUNDS = 470;
@@ -119,7 +119,7 @@ public class Ball {
     	this.xVelocity = -this.xVelocity;
     	
     	double chooseDirection = Math.random();
-    	double randomPlacement = Math.random();
+    	double randomPlacement = Math.random() * MAX_Y_SPEED;
     	
     	if(chooseDirection > 0.5) {
     		this.yVelocity = randomPlacement;

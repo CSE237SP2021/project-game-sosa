@@ -20,15 +20,15 @@ public class Racket1 {
     private final int HEIGHT;
     private final int WIDTH; 
 
-    public Racket1(int x) {
+    public Racket1(int xVal, int speed) {
     	INIT_Y = 225;
-        this.xVal = x;
+        this.xVal = xVal;
         this.yVal = INIT_Y;
         this.velocity = 0;
         this.score = 0;
         UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
-        SPEED = 1;
+        SPEED = speed;
         HEIGHT = 50;
         WIDTH = 10;
         pressUp = false;

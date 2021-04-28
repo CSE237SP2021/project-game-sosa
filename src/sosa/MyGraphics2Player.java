@@ -35,9 +35,9 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
     public MyGraphics2Player(){
     	System.out.println("in ther");
         timer.start();
-        this.player1 = new Racket1(10);
-        this.player2 = new Racket1(480);
-        this.pongBall = new Ball();
+        this.player1 = new Racket1(10, 1);
+        this.player2 = new Racket1(480, 1);
+        this.pongBall = new Ball(1.5);
         keyListen = new KeyListen();
         this.setFocusable(true);
         this.addKeyListener(keyListen);

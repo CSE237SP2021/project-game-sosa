@@ -25,9 +25,9 @@ public class MyGraphics extends JPanel implements ActionListener{
     public MyGraphics(){
     	System.out.println("in ther");
         timer.start();
-        this.racket1 = new Racket1(10);
-        this.racket2 = new Racket2();
-        this.pongBall = new Ball();
+        this.racket1 = new Racket1(10, 1);
+        this.racket2 = new Racket2(1);
+        this.pongBall = new Ball(1.5);
         keyListen = new KeyListen();
         this.setFocusable(true);
         this.addKeyListener(keyListen);
