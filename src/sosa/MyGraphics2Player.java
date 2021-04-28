@@ -18,29 +18,32 @@ import sosa.MyGraphics.KeyListen;
 
 public class MyGraphics2Player extends JPanel implements ActionListener{
 
+
 	Timer timer = new Timer(4, this);
 
-	int frameWidth = 500;
-	int frameHeight = 500;
-	Racket1 player1;
-	Racket1 player2;
-	KeyListen keyListen;
+    int frameWidth = 500;
+    int frameHeight = 500;
+    Racket1 player1;
+    Racket1 player2;
+    KeyListen keyListen;
+    
 
-	Ball pongBall;
+    Ball pongBall;
+    
+    int score1=0;
+    int score2=0;
+    
+    public MyGraphics2Player(){
+        timer.start();
+        this.player1 = new Racket1(10, 1);
+        this.player2 = new Racket1(480, 1);
+        this.pongBall = new Ball(1.5);
+        keyListen = new KeyListen();
+        this.setFocusable(true);
+        this.addKeyListener(keyListen);
+    }
 
-	int score1=0;
-	int score2=0;
 
-	public MyGraphics2Player(){
-		timer.start();
-		this.player1 = new Racket1(10);
-		this.player2 = new Racket1(480);
-		this.pongBall = new Ball();
-		keyListen = new KeyListen();
-		this.setFocusable(true);
-		this.addKeyListener(keyListen);
-
-	}
 
 
 	//paint graphics in the frame

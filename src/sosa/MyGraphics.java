@@ -11,28 +11,28 @@ public class MyGraphics extends JPanel implements ActionListener{
 
 	Timer timer = new Timer(4, this);
 
+
 	int frameWidth = 500;
 	int frameHeight = 500;
 	Racket1 racket1;
+    KeyListen keyListen;
+    
+    Racket2 racket2;
+    Ball pongBall;
+    int score1=0;
+    int score2=0;
+    
+    public MyGraphics(){
+        timer.start();
+        this.racket1 = new Racket1(10, 1);
+        this.racket2 = new Racket2(1);
+        this.pongBall = new Ball(1.5);
+        keyListen = new KeyListen();
+        this.setFocusable(true);
+        this.addKeyListener(keyListen);
+    }
 
-	KeyListen keyListen;
 
-	Racket2 racket2;
-	Ball pongBall;
-	int score1=0;
-	int score2=0;
-
-	public MyGraphics(){
-		System.out.println("in ther");
-		timer.start();
-		this.racket1 = new Racket1(10);
-		this.racket2 = new Racket2();
-		this.pongBall = new Ball();
-		keyListen = new KeyListen();
-		this.setFocusable(true);
-		this.addKeyListener(keyListen);
-
-	}
 
 
 	//paint graphics in the frame

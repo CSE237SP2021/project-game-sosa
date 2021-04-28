@@ -21,7 +21,7 @@ public class Racket2 {
     private final int HEIGHT;
     private final int WIDTH; 
     
-    public Racket2() {
+    public Racket2(int speed) {
     	INIT_Y = 225;
         this.xVal = 480;
         this.yVal = INIT_Y;
@@ -29,7 +29,7 @@ public class Racket2 {
         this.score = 0;
         UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
-        SPEED = 1;
+        SPEED = speed;
         HEIGHT = 50;
         WIDTH = 10;
         HALF_HEIGHT = HEIGHT/2;
