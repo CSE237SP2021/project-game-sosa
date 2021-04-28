@@ -35,7 +35,7 @@ a script called run.sh is provided to compile and run the program
 
 3. Enter ./run.sh into the command line and hit enter to run the program
 
-Iteration 3: Most user stories were completed, user interface was enhanced by adding more customizability features
+Iteration 3: All user stories were completed, user interface was enhanced by adding more customizability features
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
