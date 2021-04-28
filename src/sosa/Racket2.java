@@ -112,12 +112,12 @@ public class Racket2 {
     	velocity = (Math.random() < 0.5 ? 1 : -1);
     }
     
-    public int compareToBallY(double ballYVal) {
-    	if (ballYVal < midYVal) {
+    public int compareToBallY(double ballMidYVal) {
+    	if (ballMidYVal < midYVal) {
     		velocity = -1*SPEED;
     		return 1;
     	}
-    	else if (ballYVal == midYVal) {
+    	else if (ballMidYVal == midYVal) {
     		velocity = 0;
     		return 2;
     	}

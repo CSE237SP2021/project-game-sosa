@@ -3,8 +3,6 @@ package sosa;
 import java.awt.*;
 
 import java.awt.event.*;
-import java.util.function.BooleanSupplier;
-
 import javax.swing.*;
 
 public class MyGraphics extends JPanel implements ActionListener{
@@ -32,9 +30,7 @@ public class MyGraphics extends JPanel implements ActionListener{
         this.addKeyListener(keyListen);
     }
 
-
-
-
+  
 	//paint graphics in the frame
 	public void paintComponent(Graphics graphic){
 		super.paintComponent(graphic);
@@ -80,7 +76,7 @@ public class MyGraphics extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 
 		pongBall.move();
-		racket2.compareToBallY(pongBall.getYVal());
+		racket2.compareToBallY(pongBall.getMidYVal());
 		racket2.move();
 		racket1.move();
 
@@ -102,20 +98,20 @@ public class MyGraphics extends JPanel implements ActionListener{
 	//handles if the ball hits the paddle
 	public Boolean collision() {
 		int ballRadius = pongBall.getRadius();
-		double ballTop = pongBall.getYVal(); //295
-		double ballBottom = pongBall.getYVal() + (ballRadius * 2); //305
-		double ballLeft = pongBall.getXVal(); //485
-		double ballRight = pongBall.getXVal() + (ballRadius * 2); //495
+		double ballTop = pongBall.getYVal();
+		double ballBottom = pongBall.getYVal() + (ballRadius * 2);
+		double ballLeft = pongBall.getXVal();
+		double ballRight = pongBall.getXVal() + (ballRadius * 2);
 
 		double racket1Top = racket1.getYVal();
 		double racket1Bottom = racket1Top + racket1.getHeight();
 		double racket1Left = racket1.getXVal();
 		double racket1Right = racket1Left + racket1.getWidth();
 
-		double racket2Top = racket2.getYVal(); //250
-		double racket2Bottom = racket2Top + racket2.getHeight(); //300
-		double racket2Left = racket2.getXVal(); //480
-		double racket2Right = racket2Left + racket2.getWidth(); //490
+		double racket2Top = racket2.getYVal();
+		double racket2Bottom = racket2Top + racket2.getHeight();
+		double racket2Left = racket2.getXVal();
+		double racket2Right = racket2Left + racket2.getWidth();
 
 		if (((ballRight >= racket1Left && ballRight <= racket1Right) || (ballLeft >=racket1Left && ballLeft <= racket1Right) 
 				|| (ballRight >= racket1Right && ballLeft <= racket1Left))) {

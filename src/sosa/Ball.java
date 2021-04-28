@@ -6,6 +6,8 @@ public class Ball {
 
 	private double xVal;
 	private double yVal;
+	private double midXVal;
+	private double midYVal;
 	double xVelocity;
 	double yVelocity;
 	private final double MAX_Y_SPEED;
@@ -30,6 +32,8 @@ public class Ball {
 		LEFTWARD_BOUNDS = 0;
 		RIGHTWARD_BOUNDS = 500;
 		RADIUS = 5;
+		this.midXVal = INIT_X + RADIUS;
+		this.midYVal = INIT_Y + RADIUS;
 	}
 	
     //gets the x value of the ball
@@ -40,6 +44,14 @@ public class Ball {
     //gets the y value of the ball
     public double getYVal() {
         return yVal;
+    }
+    
+    public double getMidXVal() {
+    	return midXVal;
+    }
+    
+    public double getMidYVal() {
+    	return midYVal;
     }
     
     // for testing purposes
@@ -55,11 +67,13 @@ public class Ball {
     // for testing purposes
     public void setXVal(double newXVal) {
     	xVal = newXVal;
+    	midXVal = xVal + RADIUS;
     }
     
     // for testing purposes
     public void setYVal(double newYVal) {
     	yVal = newYVal;
+    	midYVal = yVal + RADIUS;
     }
     
     // for testing purposes
@@ -75,6 +89,8 @@ public class Ball {
     public void reset() {
     	xVal = INIT_X;
     	yVal = INIT_Y;
+    	midXVal = xVal + RADIUS;
+    	midYVal = yVal + RADIUS;
     	
     	xVelocity = (Math.random() > 0.5 ? 1 : -1);
     	yVelocity = 0;
@@ -138,6 +154,8 @@ public class Ball {
     public void move() {
     	this.xVal += this.xVelocity;
     	this.yVal += this.yVelocity;
+    	midXVal += xVelocity;
+    	midYVal += yVelocity;
     }
 
 	public Boolean outOfBoundsLeft() {
