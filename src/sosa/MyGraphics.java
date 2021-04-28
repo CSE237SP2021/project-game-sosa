@@ -17,6 +17,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     Racket2 racket2;
     Ball pongBall;
     public MyGraphics(){
+    	System.out.println("in ther");
         timer.start();
         this.racket1 = new Racket1();
         this.racket2 = new Racket2();
@@ -26,6 +27,7 @@ public class MyGraphics extends JPanel implements ActionListener{
         this.addKeyListener(keyListen);
 
     }
+  
 
     //paint graphics in the frame
     public void paintComponent(Graphics graphic){
