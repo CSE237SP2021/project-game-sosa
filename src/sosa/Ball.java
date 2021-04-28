@@ -25,7 +25,7 @@ public class Ball {
 		this.speed = 1;
 		this.xVelocity = (Math.random() > 0.5 ? 1 : -1);
 		this.yVelocity = 0;
-		UPPER_BOUNDS = 425;
+		UPPER_BOUNDS = 470;
 		LOWER_BOUNDS = 0;
 		LEFTWARD_BOUNDS = 0;
 		RIGHTWARD_BOUNDS = 500;
@@ -43,6 +43,16 @@ public class Ball {
     }
     
     // for testing purposes
+    public double getXVelocity() {
+    	return xVelocity;
+    }
+    
+ // for testing purposes
+    public double getYVelocity() {
+    	return yVelocity;
+    }
+    
+    // for testing purposes
     public void setXVal(double newXVal) {
     	xVal = newXVal;
     }
@@ -50,6 +60,16 @@ public class Ball {
     // for testing purposes
     public void setYVal(double newYVal) {
     	yVal = newYVal;
+    }
+    
+    // for testing purposes
+    public void setXVelocity(double newXVel) {
+    	xVelocity = newXVel;
+    }
+    
+    // for testing purposes
+    public void setYVelocity(double newYVel) {
+    	yVelocity = newYVel;
     }
     
     public void reset() {
@@ -78,6 +98,16 @@ public class Ball {
     // for testing purposes
     public int getRightwardBounds() {
     	return RIGHTWARD_BOUNDS;
+    }
+    
+ // for testing purposes
+    public int getLowerBounds() {
+    	return LOWER_BOUNDS;
+    }
+    
+    // for testing purposes
+    public int getUpperBounds() {
+    	return UPPER_BOUNDS;
     }
     
     public int getRadius() {
@@ -111,11 +141,11 @@ public class Ball {
     }
 
 	public Boolean outOfBoundsLeft() {
-		return (xVal + RADIUS) < (LEFTWARD_BOUNDS - (RADIUS * 4));
+		return (xVal + RADIUS * 2) < (LEFTWARD_BOUNDS - (RADIUS * 4));
 	}
 
 	public Boolean outOfBoundsRight() {
-		return (xVal - RADIUS) > (RIGHTWARD_BOUNDS + (RADIUS * 4));
+		return xVal > (RIGHTWARD_BOUNDS + (RADIUS * 4));
 	}
     
     

@@ -20,9 +20,9 @@ public class Racket1 {
     private final int HEIGHT;
     private final int WIDTH; 
 
-    public Racket1() {
+    public Racket1(int x) {
     	INIT_Y = 225;
-        this.xVal = 10;
+        this.xVal = x;
         this.yVal = INIT_Y;
         this.velocity = 0;
         this.score = 0;
@@ -53,6 +53,19 @@ public class Racket1 {
     public int getScore() {
 		return score;
 	}
+    
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    public int getHeight() {
+    	return HEIGHT;
+    }
+    
+    // for testing purposes
+    public void setYVal(int y) {
+    	yVal = y;
+    }
     
     //changes the velocity to handle moving the paddle up
     public void pressUp() {
