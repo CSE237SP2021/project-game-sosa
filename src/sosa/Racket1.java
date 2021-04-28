@@ -9,6 +9,8 @@ public class Racket1 {
     private int xVal;
     private int yVal;
     private int velocity;
+    private Boolean pressUp;
+    private Boolean pressDown;
     private Graphics graphic;
     private int score;
     private final int UPPER_BOUNDS;
@@ -16,7 +18,7 @@ public class Racket1 {
     private final int SPEED;
     private final int INIT_Y;
     private final int HEIGHT;
-    private final int WIDTH;
+    private final int WIDTH; 
 
     public Racket1() {
     	INIT_Y = 225;
@@ -29,6 +31,8 @@ public class Racket1 {
         SPEED = 1;
         HEIGHT = 50;
         WIDTH = 10;
+        pressUp = false;
+        pressDown = false;
     }
 
     //gets the x value of the paddle
@@ -53,17 +57,29 @@ public class Racket1 {
     //changes the velocity to handle moving the paddle up
     public void pressUp() {
     	velocity = -SPEED;
+      pressUp = true;
     }
 
     
     //changes the velocity to handle moving the paddle down
     public void pressDown() {
     	velocity = SPEED;
+      pressDown = true;
     }
     
     //changes the velocity to handle a idle state
-    public void release() {
-    	velocity = 0;
+     public void release(Boolean up) {
+    	if (up) {
+    		pressUp = false;
+    		velocity = SPEED;
+    	}
+    	else {
+    		pressDown = false;
+    		velocity = -SPEED;
+    	}
+    	if (!pressUp && !pressDown) {
+    		velocity = 0;
+    	}
     }
     
     //checks if the paddle is going beyond the boundaries
