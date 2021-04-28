@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import score.ScoreBoard;
+
 public class MyGraphics extends JPanel implements ActionListener{
     
     Timer timer = new Timer(4, this);
@@ -17,6 +19,9 @@ public class MyGraphics extends JPanel implements ActionListener{
     
     Racket2 racket2;
     Ball pongBall;
+    int score1=0;
+    int score2=0;
+    
     public MyGraphics(){
         timer.start();
         this.racket1 = new Racket1();
@@ -25,7 +30,7 @@ public class MyGraphics extends JPanel implements ActionListener{
         keyListen = new KeyListen();
         this.setFocusable(true);
         this.addKeyListener(keyListen);
-
+       
     }
 
     //paint graphics in the frame
@@ -40,7 +45,18 @@ public class MyGraphics extends JPanel implements ActionListener{
         graphic2D.fillRect(racket1.getXVal(), racket1.getYVal(), 10, 50);
 
         graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), pongBall.getRadius()*2, pongBall.getRadius()*2);
-
+        //score.paint();
+        
+        Graphics2D g2 = (Graphics2D)graphic;
+	      g2.setRenderingHint(
+	         RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	      
+	      Font font = new Font("Serif", Font.PLAIN, 25);
+	      g2.setFont(font);
+//	      g2.drawString("score1"+score2, 10, 400);
+//	      g2.drawString("score2"+score1, 350, 400);
+	      g2.drawString("Player 1: "+score1, 10, 400);
+	      g2.drawString("Player 2: "+score2, 350, 400);
     }
 
     
@@ -74,11 +90,15 @@ public class MyGraphics extends JPanel implements ActionListener{
     	
     	if (pongBall.outOfBoundsLeft()) {
     		System.out.println("Left out of bounds: " + pongBall.getXVal());
-    		racket2.scorePoint();
+    		//score1=racket2.scorePoint();
+    		score2=racket2.scorePoint();
+    		System.out.println("score for racket2 "+ score2);
     		resetPositions();
     	} else if (pongBall.outOfBoundsRight()) {
     		System.out.println("Right out of bounds " + pongBall.getYVal());
-    		racket1.scorePoint();
+    		//score2=racket1.scorePoint();
+    		score1=racket1.scorePoint();
+    		System.out.println("score for racket1 "+ score1);
     		resetPositions();
     	}
 
