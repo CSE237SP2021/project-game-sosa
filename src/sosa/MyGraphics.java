@@ -17,6 +17,9 @@ public class MyGraphics extends JPanel implements ActionListener{
     
     Racket2 racket2;
     Ball pongBall;
+    int score1=0;
+    int score2=0;
+    
     public MyGraphics(){
     	System.out.println("in ther");
         timer.start();
@@ -36,13 +39,20 @@ public class MyGraphics extends JPanel implements ActionListener{
         this.setBackground(Color.GREEN);
 
         Graphics2D graphic2D = (Graphics2D) graphic;
+        Graphics2D graphicScore = (Graphics2D) graphic;
+      
         graphic2D.setColor(Color.WHITE);
         
         graphic2D.fillRect(racket2.getXVal(), racket2.getYVal(), 10, 50);
         graphic2D.fillRect(racket1.getXVal(), racket1.getYVal(), 10, 50);
 
         graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), pongBall.getRadius()*2, pongBall.getRadius()*2);
-
+        
+        graphicScore.setColor(Color.BLACK);
+        Font font = new Font("Serif", Font.PLAIN, 20);
+        graphicScore.setFont(font);
+        graphicScore.drawString("Player 1: "+ score1, 10, 400);
+        graphicScore.drawString("Player 2: "+ score2, 370, 400);
     }
 
     
@@ -78,11 +88,13 @@ public class MyGraphics extends JPanel implements ActionListener{
     	
     	if (pongBall.outOfBoundsLeft()) {
     		System.out.println("Left out of bounds: " + pongBall.getXVal());
-    		racket2.scorePoint();
+    		score2=racket2.scorePoint();
+    		System.out.println("score for racket2 "+ score2);
     		resetPositions();
     	} else if (pongBall.outOfBoundsRight()) {
     		System.out.println("Right out of bounds " + pongBall.getYVal());
-    		racket1.scorePoint();
+    		score1=racket1.scorePoint();
+    		System.out.println("score for racket1 "+ score1);
     		resetPositions();
     	}
 
