@@ -22,7 +22,7 @@ public class MyFrame extends JFrame{
 		addOnePlayerButton();
 		addTwoPlayerButton();
 		addQuitButton();
-		addDifficultyRadioButtons();
+		// addDifficultyRadioButtons();
 	}
 
 	//adds the title for the game on the main menu
