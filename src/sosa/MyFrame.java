@@ -42,7 +42,13 @@ public class MyFrame extends JFrame{
        //creates a button and allows for the button to direct to the two player version of the game
       JButton twoPlayer = new JButton("2 Player");
       twoPlayer.setBounds(340, 250, 120, 30);
-      
+      twoPlayer.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		  GameFrame2Player game = new GameFrame2Player();
+    		  game.setVisible(true);
+    		  twoPlayer.setVisible(false);
+    	  }
+      });
       
       //creates a button and allows for the user to close the application by clicking the button
       JButton quit = new JButton("Quit");
@@ -52,12 +58,43 @@ public class MyFrame extends JFrame{
     		  System.exit(0);
     	  }
       });
+      
+      
+      //radio buttons to help determine the difficulty of the game
+      JLabel difficultyLabel = new JLabel();
+      JRadioButton easy = new JRadioButton("Easy");
+      JRadioButton regular= new JRadioButton("Regular");
+      JRadioButton hard = new JRadioButton("Hard");
+      
+      
+      difficultyLabel.setText("Difficulty:");
+      difficultyLabel.setSize(100, 30);
+      difficultyLabel.setLocation(50, 350);
+      difficultyLabel.setVisible(true);
+      repaint();
+      
+      easy.setBounds(150, 350, 100, 30);
+      regular.setBounds(240, 350, 100, 30);
+      hard.setBounds(350, 350, 100, 30);
+      
+      
+      ButtonGroup difficultyPick = new ButtonGroup();
+      
+      difficultyPick.add(easy);
+      difficultyPick.add(regular);
+      difficultyPick.add(hard);
+      
+      
        
       //adding all of the bottons and label to the JFrame
        this.add(quit);
        this.add(onePlayer);
        this.add(twoPlayer);
        this.add(pongTitle);
+       this.add(easy);
+       this.add(regular);
+       this.add(hard);
+       this.add(difficultyLabel);
        
 
     }
