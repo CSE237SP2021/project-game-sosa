@@ -18,6 +18,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     Racket2 racket2;
     Ball pongBall;
     public MyGraphics(){
+    	System.out.println("in ther");
         timer.start();
         this.racket1 = new Racket1();
         this.racket2 = new Racket2();
@@ -27,6 +28,7 @@ public class MyGraphics extends JPanel implements ActionListener{
         this.addKeyListener(keyListen);
 
     }
+  
 
     //paint graphics in the frame
     public void paintComponent(Graphics graphic){
@@ -52,6 +54,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     	racket2.compareToBallY(pongBall.getYVal());
     	racket2.move();
     	racket1.move();
+      
     	//ricochets the ball off of the right racket if ball has same x val and y val in between the rackets bounds
     	if(((racket2.getXVal() -10) == pongBall.getXVal()) && (pongBall.getYVal() >= racket2.getYVal() - 25)
     			&& (pongBall.getYVal() <= racket2.getYVal() + 25)) {

@@ -1,18 +1,56 @@
 package sosa;
 
 import javax.swing.*;
+
+import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class MyFrame extends JFrame{
-    //creating racket on left side
-    MyGraphics myGraphics = new MyGraphics();
-
+  
+	
+	//this class is used for the display and functionality of the main menu
     public MyFrame(){
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(myGraphics);
         this.setVisible(true);
+        
+        //creates a label that says "PONG" and centers on the screen
+        JLabel pongTitle = new JLabel();
+        pongTitle.setText("PONG");
+        pongTitle.setSize(140, 140);
+        pongTitle.setLocation(205, 100);
+        pongTitle.setVisible(true);
+        pongTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        repaint();      
+        
+        //creates a button and allows for the button to direct to the one player version of the game
+       JButton onePlayer = new JButton("1 Player");
+       onePlayer.setBounds(40, 250, 120, 30);
+       onePlayer.addActionListener(new ActionListener() {
+    	   public void actionPerformed(ActionEvent e) {
+    		
+    		   GameFrame game = new GameFrame();
+    		   game.setVisible(true);
+    		   onePlayer.setVisible(false);
+   
+    		  
+    		   
+    	   }
+       });
+      
+       //creates a button and allows for the button to direct to the two player version of the game
+      JButton twoPlayer = new JButton("2 Player");
+      twoPlayer.setBounds(340, 250, 120, 30);
+      
+       
+       
+       
+       this.add(onePlayer);
+       this.add(twoPlayer);
+       this.add(pongTitle);
+       
+
     }
 
 }
