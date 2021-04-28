@@ -3,8 +3,6 @@ package sosa;
 import java.awt.*;
 
 import java.awt.event.*;
-import java.util.function.BooleanSupplier;
-
 import javax.swing.*;
 
 public class MyGraphics extends JPanel implements ActionListener{
@@ -77,7 +75,7 @@ public class MyGraphics extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e){
 
     	pongBall.move();
-    	racket2.compareToBallY(pongBall.getYVal());
+    	racket2.compareToBallY(pongBall.getMidYVal());
     	racket2.move();
     	racket1.move();
       
