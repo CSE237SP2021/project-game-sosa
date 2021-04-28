@@ -1,6 +1,7 @@
 package sosa;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,10 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
     
     //Racket2 racket2;
     Ball pongBall;
+    
+    int score1=0;
+    int score2=0;
+    
     public MyGraphics2Player(){
     	System.out.println("in ther");
         timer.start();
@@ -52,8 +57,13 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
 
         graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), 10, 10);
         
+        Graphics2D graphicScore = (Graphics2D) graphic;
+        graphicScore.setColor(Color.BLACK);
+        Font font = new Font("Serif", Font.PLAIN, 20);
+        graphicScore.setFont(font);
+        graphicScore.drawString("Player 1: "+ score1, 10, 400);
+        graphicScore.drawString("Player 2: "+ score2, 370, 400);
         
-
     }
 
     
@@ -85,10 +95,27 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
     	if(pongBall.getYVal() <= 0 || pongBall.getYVal() >= 470) {
     		pongBall.hitWall();
     	}
+    	if (pongBall.outOfBoundsLeft()) {
+    		System.out.println("Left out of bounds: " + pongBall.getXVal());
+    		score2=player1.scorePoint();
+    		System.out.println("score for racket2 "+ score2);
+    		resetPositions();
+    	} else if (pongBall.outOfBoundsRight()) {
+    		System.out.println("Right out of bounds " + pongBall.getYVal());
+    		score1=player1.scorePoint();
+    		System.out.println("score for racket1 "+ score1);
+    		resetPositions();
+    	}
 
         repaint();
+        
     }
-	
+  
+	public void resetPositions() {
+		pongBall.reset();
+		player1.reset();
+		player2.reset();
+	}
     class KeyListen implements KeyListener {
     	
     	@Override
@@ -122,7 +149,6 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			
 			if (e.getKeyCode() == KeyEvent.VK_W) {
 				player1.release(true);
 				System.out.println("release player 1");
@@ -139,7 +165,6 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
 				player2.release(false);
 				System.out.println("release player 2");
 			}
-			
 		}
     	
     }

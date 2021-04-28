@@ -12,19 +12,25 @@ public class Racket1 {
     private Boolean pressUp;
     private Boolean pressDown;
     private Graphics graphic;
+    private int score;
     private final int UPPER_BOUNDS;
     private final int LOWER_BOUNDS;
     private final int SPEED;
+    private final int INIT_Y;
+    private final int HEIGHT;
+    private final int WIDTH; 
 
     public Racket1() {
-        this.xVal = 20;
-        this.yVal = 225;
-
+    	INIT_Y = 225;
+        this.xVal = 10;
+        this.yVal = INIT_Y;
         this.velocity = 0;
+        this.score = 0;
         UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
         SPEED = 1;
-        
+        HEIGHT = 50;
+        WIDTH = 10;
         pressUp = false;
         pressDown = false;
     }
@@ -39,21 +45,30 @@ public class Racket1 {
         return yVal;
     }
     
+    // for testing purposes
+    public int getInitY() {
+    	return INIT_Y;
+    }
+    
+    public int getScore() {
+		return score;
+	}
+    
     //changes the velocity to handle moving the paddle up
     public void pressUp() {
     	velocity = -SPEED;
-    	pressUp = true;
+      pressUp = true;
     }
 
     
     //changes the velocity to handle moving the paddle down
     public void pressDown() {
     	velocity = SPEED;
-    	pressDown = true;
+      pressDown = true;
     }
     
     //changes the velocity to handle a idle state
-    public void release(Boolean up) {
+     public void release(Boolean up) {
     	if (up) {
     		pressUp = false;
     		velocity = SPEED;
@@ -84,6 +99,14 @@ public class Racket1 {
     public void move(){
         boundaryCheck();
         yVal += velocity;
+    }
+    
+    public int scorePoint() {
+    	return ++score;
+    }
+    
+    public void reset() {
+    	yVal = INIT_Y;
     }
 
 }
