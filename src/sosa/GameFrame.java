@@ -7,9 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame{
-    //creating racket on left side
+   
     MyGraphics myGraphics = new MyGraphics();
-    private boolean isPlay;
 
     public GameFrame(){
         this.setSize(500, 500);
