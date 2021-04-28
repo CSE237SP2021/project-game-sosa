@@ -43,9 +43,18 @@ public class MyFrame extends JFrame{
       JButton twoPlayer = new JButton("2 Player");
       twoPlayer.setBounds(340, 250, 120, 30);
       
+      
+      //creates a button and allows for the user to close the application by clicking the button
+      JButton quit = new JButton("Quit");
+      quit.setBounds(190, 400, 120, 30);
+      quit.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		  System.exit(0);
+    	  }
+      });
        
-       
-       
+      //adding all of the bottons and label to the JFrame
+       this.add(quit);
        this.add(onePlayer);
        this.add(twoPlayer);
        this.add(pongTitle);
