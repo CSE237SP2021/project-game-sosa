@@ -42,7 +42,13 @@ public class MyFrame extends JFrame{
        //creates a button and allows for the button to direct to the two player version of the game
       JButton twoPlayer = new JButton("2 Player");
       twoPlayer.setBounds(340, 250, 120, 30);
-      
+      twoPlayer.addActionListener(new ActionListener() {
+    	  public void actionPerformed(ActionEvent e) {
+    		  GameFrame2Player game = new GameFrame2Player();
+    		  game.setVisible(true);
+    		  twoPlayer.setVisible(false);
+    	  }
+      });
       
       //creates a button and allows for the user to close the application by clicking the button
       JButton quit = new JButton("Quit");
