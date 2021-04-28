@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.function.BooleanSupplier;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -33,8 +34,8 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
     public MyGraphics2Player(){
     	System.out.println("in ther");
         timer.start();
-        this.player1 = new Racket1();
-        this.player2 = new Racket1();
+        this.player1 = new Racket1(10);
+        this.player2 = new Racket1(480);
         this.pongBall = new Ball();
         keyListen = new KeyListen();
         this.setFocusable(true);
@@ -50,9 +51,8 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
 
         Graphics2D graphic2D = (Graphics2D) graphic;
         graphic2D.setColor(Color.WHITE);
-        graphic2D.fillRect(480, player2.getYVal(), 10, 50);
-
-
+        
+        graphic2D.fillRect(player2.getXVal(), player2.getYVal(), 10, 50);
         graphic2D.fillRect(player1.getXVal(), player1.getYVal(), 10, 50);
 
         graphic2D.fillOval( (int)pongBall.getXVal(), (int)pongBall.getYVal(), 10, 10);
@@ -75,26 +75,10 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
     	player2.move();
     	player1.move();
     	
-    	//ricochets the ball off of the right racket if ball has same x val and y val in between the rackets bounds
-    	if(((player2.getXVal() -10) == pongBall.getXVal()) && (pongBall.getYVal() >= player2.getYVal() - 25)
-    			&& (pongBall.getYVal() <= player2.getYVal() + 25)) {
-    		System.out.println("doink");
+    	collision();
     	
-    		pongBall.hitPaddle();
-    	}
+    	hitWall();
     	
-    	//ricochets the ball off of the left racket if ball has same x val and y val in between the rackets bounds
-    	if(((player1.getXVal() + 10) == pongBall.getXVal()) && (pongBall.getYVal() >= player1.getYVal() - 25)
-    			&& (pongBall.getYVal() <= player1.getYVal() + 25)){
-    		System.out.println("dink");
-    		
-    		pongBall.hitPaddle();
-    	}
-    	
-    	//ricochets the ball off of the wall if ball has an x val that goes passed the given boundary
-    	if(pongBall.getYVal() <= 0 || pongBall.getYVal() >= 470) {
-    		pongBall.hitWall();
-    	}
     	if (pongBall.outOfBoundsLeft()) {
     		System.out.println("Left out of bounds: " + pongBall.getXVal());
     		score2=player1.scorePoint();
@@ -110,6 +94,68 @@ public class MyGraphics2Player extends JPanel implements ActionListener{
         repaint();
         
     }
+    
+    public Boolean collision() {
+    	int ballRadius = pongBall.getRadius();
+    	double ballTop = pongBall.getYVal();
+    	double ballBottom = pongBall.getYVal() + (ballRadius * 2);
+    	double ballLeft = pongBall.getXVal();
+    	double ballRight = pongBall.getXVal() + (ballRadius * 2);
+    	
+    	double racket1Top = player1.getYVal();
+    	double racket1Bottom = racket1Top + player1.getHeight();
+    	double racket1Left = player1.getXVal();
+    	double racket1Right = racket1Left + player1.getWidth();
+    	
+    	double racket2Top = player2.getYVal();
+    	double racket2Bottom = racket2Top + player2.getHeight();
+    	double racket2Left = player2.getXVal();
+    	double racket2Right = racket2Left + player2.getWidth();
+    	
+    	if (((ballRight >= racket1Left && ballRight <= racket1Right) || (ballLeft >=racket1Left && ballLeft <= racket1Right) 
+    			|| (ballRight >= racket1Right && ballLeft <= racket1Left))) {
+    		if ((ballBottom >= racket1Top && ballBottom <= racket1Bottom) || (ballTop >=racket1Top && ballTop <= racket1Bottom)) {
+    			System.out.println("dink");
+        		pongBall.hitPaddle();
+        		return true;
+    		}
+    	}
+    	
+    	if (((ballRight >= racket2Left && ballRight <= racket2Right) || (ballLeft >=racket2Left && ballLeft <= racket2Right) 
+    			|| (ballRight >= racket2Right && ballLeft <= racket2Left))) {
+    		if ((ballBottom >= racket2Top && ballBottom <= racket2Bottom) || (ballTop >=racket2Top && ballTop <= racket2Bottom)) {
+    			System.out.println("doink");
+        		pongBall.hitPaddle();
+        		return true;
+    		}
+    	}
+    	
+		return false;
+	}
+    
+    public boolean hitWall() {
+    	//ricochets the ball off of the wall if ball has an x val that goes passed the given boundary
+    	if(pongBall.getYVal() <= pongBall.getLowerBounds() || pongBall.getYVal() >= pongBall.getUpperBounds()) {
+    		pongBall.hitWall();
+    		return true;
+    	}
+    	return false;
+    }
+	
+    // For testing purposes
+    public Ball getPongBall() {
+		return pongBall;
+	}
+    
+    // For testing purposes
+	public Racket1 getRacket1() {
+		return player1;
+	}
+	
+	// For testing purposes
+	public Racket1 getRacket2() {
+		return player2;
+	}
   
 	public void resetPositions() {
 		pongBall.reset();

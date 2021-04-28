@@ -18,6 +18,8 @@ public class Racket2 {
     private final int SPEED;
     private final int INIT_Y;
     private final int HALF_HEIGHT;
+    private final int HEIGHT;
+    private final int WIDTH; 
     
     public Racket2() {
     	INIT_Y = 225;
@@ -28,7 +30,9 @@ public class Racket2 {
         UPPER_BOUNDS = 425;
         LOWER_BOUNDS = 0;
         SPEED = 1;
-        HALF_HEIGHT = 25;
+        HEIGHT = 50;
+        WIDTH = 10;
+        HALF_HEIGHT = HEIGHT/2;
         this.midYVal = this.yVal + HALF_HEIGHT;
     }
     
@@ -55,6 +59,14 @@ public class Racket2 {
     public int getScore() {
 		return score;
 	}
+    
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    public int getHeight() {
+    	return HEIGHT;
+    }
     
     // for testing purposes
     public void setYVal(int y) {
